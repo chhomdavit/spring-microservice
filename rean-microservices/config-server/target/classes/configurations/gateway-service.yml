@@ -1,0 +1,37 @@
+server:
+  port: 8222
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':  # Applies to all paths
+            allowedOrigins: "*"
+            allowedMethods: GET, POST, PUT, DELETE, OPTIONS
+            allowedHeaders: "*"
+  
+      routes:
+        - id: customer-service
+          uri: lb:http://CUSTOMER-SERVICE
+          predicates:
+            - Path=/api/v1/customers/**
+            
+        - id: product-service
+          uri: lb:http://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/products/**,/api/v1/categories/**,/api/v1/upload/**
+            
+        - id: notification-service
+          uri: lb:http://NOTIFICATION-SERVICE
+          predicates:
+            - Path=/api/v1/notification/**
+            
+        - id: order-service
+          uri: lb:http://ORDER-SERVICE
+          predicates:
+            - Path=/api/v1/orders/**
+         
+      

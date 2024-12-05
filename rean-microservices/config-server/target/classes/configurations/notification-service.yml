@@ -1,0 +1,12 @@
+server:
+  port: 8050
+
+spring:
+  data:
+    mongodb:
+     uri: mongodb://admin:admin@localhost:27017/notification?authSource=admin
+    
+  kafka:
+    bootstrap-servers: http://localhost:9092
+    consumer:
+      group-id: notification-id

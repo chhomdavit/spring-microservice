@@ -1,0 +1,9 @@
+application:
+  config:
+    notification-url: http://localhost:8222/api/v1/notification
+    
+    customer-url: http://localhost:8222/api/v1/customers
+  
+    product-url: http://localhost:8222/api/v1/products
+    
+    order-url: http://localhost:8222/api/v1/order
